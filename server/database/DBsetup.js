@@ -4,6 +4,7 @@ const authController = require("./../controllers/authController");
 const userController = require("./../controllers/userController");
 const adminController = require("./../controllers/adminContoller");
 const LocationController = require("./../controllers/locationController");
+const BookingController = require("./../controllers/BookingController");
 
 // async function setupDatabase() {
 //   try {
@@ -162,3 +163,5 @@ exports.getCarByLocation = car_controller.getCarsByLocation;
 exports.getallLocations = LocationController.getAllLocations;
 exports.addLocation = LocationController.AddLocations;
 exports.deleteLocation = LocationController.deleteLocation;
+
+exports.getAllBookings = BookingController.getallBookings;

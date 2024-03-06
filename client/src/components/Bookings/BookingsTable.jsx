@@ -1,6 +1,24 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 const BookingsTable = () => {
+  const [bookings, setBookings] = useState([]);
+
+  const getAllBookings = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:8001/dashboard/manage-bookings"
+      );
+      setBookings(response.data);
+      console.log(bookings);
+    } catch (error) {
+      console.log("error fetching booking data", error);
+    }
+  };
+
+  useEffect(() => {
+    getAllBookings();
+  }, []);
   return (
     <div className="px-5 py-3">
       <div className="d-flex justify-content-center mt-2">
@@ -11,39 +29,24 @@ const BookingsTable = () => {
               <th>Model</th>
               <th>pickup</th>
               <th>pickupdate</th>
-              <th>duration</th>
+              <th>dropoff</th>
+              <th>dropoff location</th>
               <th>total cost</th>
             </tr>
           </thead>
           <tbody>
-            {/* {cars.map((car, index) => (
+            {bookings.map((booking, index) => {
+              console.log(bookings);
               <tr key={index}>
-                <td>{car.model}</td>
-                <td>
-                  <img
-                    src={`http://localhost:8001/assets/${car.image_path}`}
-                    alt=""
-                    className="employee_image"
-                  />
-                </td>
-                <td>{car.is_available}</td>
-                <td>{car.rent_per_day}</td>
-                <td>
-                  <Link
-                    to={`/dashboard/manage-cars/${car.id}`} // Use the correct URL pattern
-                    className="btn btn-primary btn-sm me-2"
-                  >
-                    details
-                  </Link>
-                  <button
-                    onClick={() => handleDelete(car.id)}
-                    className="btn btn-sm btn-danger"
-                  >
-                    delete
-                  </button>
-                </td>
-              </tr>
-            ))} */}
+                <td>{booking.booking_id}</td>
+                <td>model</td>
+                <td>{booking.pickup_location}</td>
+                <td>{booking.pickup_date}</td>
+                <td>{booking.dropoff_location}</td>
+                <td>{booking.dropoff_date}</td>
+                <td>{booking.total_cost}</td>
+              </tr>;
+            })}
           </tbody>
         </table>
       </div>

@@ -6,6 +6,7 @@ const authController = require("./../database/DBsetup");
 const userController = require("./../database/DBsetup");
 const adminContoller = require("./../database/DBsetup");
 const locationController = require("./../database/DBsetup");
+const BookingController = require("./../database/DBsetup");
 
 router.route("/register").post(authController.register);
 
@@ -50,5 +51,9 @@ router
   .route("/dashboard/admin/:id")
   .put(adminContoller.editAdmin)
   .delete(adminContoller.deleteAdmin);
+
+router
+  .route("/dashboard/manage-bookings")
+  .get(BookingController.getAllBookings);
 
 module.exports = router;

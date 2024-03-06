@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "../AdminDashboard/Header";
+
 import BookingsTable from "./BookingsTable";
 
 const ManageBookings = () => {
