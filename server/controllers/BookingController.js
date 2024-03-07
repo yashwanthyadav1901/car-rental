@@ -12,4 +12,34 @@ exports.getallBookings = (req, res) => {
   });
 };
 
+exports.addBookings = (req, res) => {
+  const {
+    carid,
+    userid,
+    pickuplocation,
+    dropofflocation,
+    pickupdate,
+    dropofdate,
+  } = req.body;
+
+  const sql =
+    "INSERT INTO bookings (user_id, car_id, pickup_location, dropoff_location, pickup_date, dropoff_date) VALUES (?,?,?,?,?,?)";
+
+  const values = [
+    userid,
+    carid,
+    pickuplocation,
+    dropofflocation,
+    pickupdate,
+    dropofdate,
+  ];
+
+  db.query(sql, values, (err) => {
+    if (err) {
+      return res.status(500).json({ error: "error adding booking", err });
+    }
+    res.status(201).json({ message: "booking added successfully" });
+  });
+};
+
 module.exports = exports;

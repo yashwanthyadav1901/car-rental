@@ -165,3 +165,4 @@ exports.addLocation = LocationController.AddLocations;
 exports.deleteLocation = LocationController.deleteLocation;
 
 exports.getAllBookings = BookingController.getallBookings;
+exports.addBooking = BookingController.addBookings;

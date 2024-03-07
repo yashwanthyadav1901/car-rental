@@ -51,7 +51,7 @@ const CarSearch = () => {
           manual={car.manual}
           fuel={car.fuel}
           seats={car.seat}
-          imageUrl={`http://localhost:8001/assets/${car.image_path}`} // Adjust image URL based on the model
+          imageUrl={`http://localhost:8001/assets/${car.image_path}`}
         />
       ))}
     </div>

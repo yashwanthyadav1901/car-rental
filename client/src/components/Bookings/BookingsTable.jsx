@@ -10,7 +10,6 @@ const BookingsTable = () => {
         "http://localhost:8001/dashboard/manage-bookings"
       );
       setBookings(response.data);
-      console.log(bookings);
     } catch (error) {
       console.log("error fetching booking data", error);
     }
@@ -19,6 +18,7 @@ const BookingsTable = () => {
   useEffect(() => {
     getAllBookings();
   }, []);
+
   return (
     <div className="px-5 py-3">
       <div className="d-flex justify-content-center mt-2">
@@ -35,8 +35,7 @@ const BookingsTable = () => {
             </tr>
           </thead>
           <tbody>
-            {bookings.map((booking, index) => {
-              console.log(bookings);
+            {bookings.map((booking, index) => (
               <tr key={index}>
                 <td>{booking.booking_id}</td>
                 <td>model</td>
@@ -45,8 +44,8 @@ const BookingsTable = () => {
                 <td>{booking.dropoff_location}</td>
                 <td>{booking.dropoff_date}</td>
                 <td>{booking.total_cost}</td>
-              </tr>;
-            })}
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

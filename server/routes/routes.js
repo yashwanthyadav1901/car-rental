@@ -54,6 +54,7 @@ router
 
 router
   .route("/dashboard/manage-bookings")
-  .get(BookingController.getAllBookings);
+  .get(BookingController.getAllBookings)
+  .post(BookingController.addBooking);
 
 module.exports = router;
